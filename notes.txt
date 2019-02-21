@@ -1,0 +1,43 @@
+import React, {
+  BrowserRouter as Router, 
+  Route, 
+  Switch,
+  Redirect,
+  Link
+} from 'react-router-dom';
+
+export default function app() {
+  return (
+    <HashRouter> OR <BrowserRouter> OR <Router>
+      <Switch> // load the first thing that matches
+        <Route path="/" component={Search} />
+        <Route path="/artist/:id" component={Artist} />
+        <Route path="/work/:id" component={Work} />
+        <Redirect to="/" />
+      </Switch>
+    </HashRouter>
+  )
+}
+
+function Search() {
+  return (
+    <h1>Search</h1>
+    <Route path="/a" component={About} />
+    <Link to="/artist/:id">Artist</Link>
+  )
+}
+
+function Artist() {
+  return (
+    <p>Artist</p>
+    console.log(props.match.params.id)
+    <Link to="/">Back to Search</Link>
+  )
+}
+
+function Work() {
+  return (
+    <p>Work</p>
+    <Link to="/">Back to Search</Link>
+  )
+}
