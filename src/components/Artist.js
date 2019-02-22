@@ -16,7 +16,6 @@ export default class Artist extends PureComponent {
   fetchWorks = () => {
     getArtist(this.props.match.params.id)
       .then(res => {
-        console.log('response', res);
         this.setState({
           artist: res.artist,
           works: res.works
@@ -25,7 +24,6 @@ export default class Artist extends PureComponent {
   }
 
   componentDidMount() {
-    console.log('mounted');
     this.fetchWorks();
   }
 

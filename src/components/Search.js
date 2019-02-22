@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
-// import PropTypes from 'prop-types';
 import Artists from './Artists.js';
 import { getArtists } from '../services/musicBrainzApi';
-
-// import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 export default class Search extends PureComponent {
   state = {
@@ -43,14 +40,6 @@ export default class Search extends PureComponent {
     });
 
   }
-
-  // componentDidMount() {
-  //   console.log('MOUNTED');
-  // }
-
-  // componentDidUpdated() {
-  //   console.log('DIDUPDATE');
-  // }
 
   render() {
 

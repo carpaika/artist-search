@@ -8,13 +8,10 @@ export default class Lyrics extends PureComponent {
   }
   state = {
     lyrics: ''
-
   }
 
   fetchLyrics = () => {
-    console.log('PROPS', this.props);
     const artistAlter = this.props.match.params.artist.replace(/ /g, '-');
-    console.log('ARTIST', artistAlter);
     getLyrics(artistAlter, this.props.match.params.work)
       .then(res => {
         this.setState({
