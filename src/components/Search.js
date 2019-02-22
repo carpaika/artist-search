@@ -31,13 +31,15 @@ export default class Search extends PureComponent {
 
   increment = () => {
     this.setState(state => ({ offset: state.offset + 25 }), () => {
-      console.log('offset up', this.state.offset);
+      this.fetchArtists(event);
+      console.log('artists', this.state.artists);
     });
   }
 
   decrement = () => {
-    this.setState(state => ({ offset: state.offset - 1 }), () => {
-      console.log('offset down', this.state.offset);
+    this.setState(state => ({ offset: state.offset - 25 }), () => {
+      this.fetchArtists(event);
+      console.log('artists', this.state.artists);
     });
 
   }
@@ -52,7 +54,7 @@ export default class Search extends PureComponent {
 
   render() {
 
-    const { artists, artistToSearch } = this.state;
+    const { artists, artistToSearch, count, offset } = this.state;
     return (
       <>
       <form onSubmit={this.fetchArtists}>
@@ -61,9 +63,9 @@ export default class Search extends PureComponent {
         </label>
         <button>Search</button>
       </form>
-      {artists.length && <button onClick={this.decrement}>Page Down</button>}
-      {artists.length && <button onClick={this.increment}>Page Up</button>}
-      {artists.length && <Artists artists={artists} />}
+      {artists.length > 0 && <button onClick={this.decrement}>Page Down</button>}
+      {artists.length > 0 && count > offset && <button onClick={this.increment}>Page Up</button>}
+      {artists.length > 0 && <Artists artists={artists} />}
       </>
     );
   }
