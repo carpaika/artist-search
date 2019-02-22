@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styles from './css/Artists.css';
 
 export default function Artists({ artists }) {
   const artistList = artists.map(artist => {
@@ -11,7 +12,7 @@ export default function Artists({ artists }) {
     );
   });
   return (
-    <ul>{artistList}</ul>
+    <ul className={styles.artists}>{artistList}</ul>
   ); 
 }
 

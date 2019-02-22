@@ -3,6 +3,7 @@ import Search from './Search';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Artist from './Artist';
 import Lyrics from './Lyrics';
+import 'normalize.css';
 
 export default class App extends Component {
 

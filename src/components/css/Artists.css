@@ -1,0 +1,10 @@
+.artists {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  li {
+    padding: 5px;
+    list-style: none;
+  }
+  li:hover {
+    background: rgba(255, 243, 76, 0.781)
+  }
+}

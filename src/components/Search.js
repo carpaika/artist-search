@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Artists from './Artists.js';
 import { getArtists } from '../services/musicBrainzApi';
+import styles from './css/Search.css';
 
 export default class Search extends PureComponent {
   state = {
@@ -38,7 +39,6 @@ export default class Search extends PureComponent {
       this.fetchArtists(event);
       console.log('artists', this.state.artists);
     });
-
   }
 
   render() {
@@ -46,15 +46,20 @@ export default class Search extends PureComponent {
     const { artists, artistToSearch, count, offset } = this.state;
     return (
       <>
-      <form onSubmit={this.fetchArtists}>
-        <label>
-          <input type="text" name="artistToSearch" value={artistToSearch} onChange={this.handleChange}></input>
-        </label>
-        <button>Search</button>
-      </form>
-      {artists.length > 0 && <button onClick={this.decrement}>Page Down</button>}
-      {artists.length > 0 && count > offset && <button onClick={this.increment}>Page Up</button>}
-      {artists.length > 0 && <Artists artists={artists} />}
+      <div className={styles.search}> 
+        <h1>SEARCH FOR ARTIST/MUSICIAN</h1>
+        <form onSubmit={this.fetchArtists}>
+          <label>
+            <input type="text" name="artistToSearch" value={artistToSearch} onChange={this.handleChange}></input>
+          </label>
+          <button>Search</button>
+        </form>
+        <div>
+          {artists.length > 0 && <button onClick={this.decrement}>Page Down</button>}
+          {artists.length > 0 && count > offset && <button onClick={this.increment}>Page Up</button>}
+        </div>
+        {artists.length > 0 && <Artists artists={artists} />}
+      </div>
       </>
     );
   }

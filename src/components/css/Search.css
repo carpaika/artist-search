@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+.search {
+  h1 {
+  margin: 0;
+  font-family: Staatliches;
+  padding: 10px;
+  text-align: center;
+}
+form {
+  text-align: center;
+  button {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  }
+}
+button {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 auto;
+}
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+}
