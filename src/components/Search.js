@@ -8,12 +8,13 @@ import { getArtists } from '../services/musicBrainzApi';
 export default class Search extends PureComponent {
   state = {
     artists: [],
-    artistToSearch: ''
+    artistToSearch: '',
+    count: 0,
+    offset: 0
   }
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
-    console.log('handleChange', this.state.artistToSearch);
   }
 
   fetchArtists = (event) => {
@@ -21,17 +22,16 @@ export default class Search extends PureComponent {
     getArtists(this.state.artistToSearch)
       .then(res => {
         this.setState({ artists: res.artists });
-        console.log('ARTIST STATE', this.state.artists);
       });
   }
 
-  componentDidMount() {
-    console.log('MOUNTED');
-  }
+  // componentDidMount() {
+  //   console.log('MOUNTED');
+  // }
 
-  componentDidUpdated() {
-    console.log('DIDUPDATE');
-  }
+  // componentDidUpdated() {
+  //   console.log('DIDUPDATE');
+  // }
 
   render() {
 
