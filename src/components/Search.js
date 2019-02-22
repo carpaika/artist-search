@@ -19,8 +19,17 @@ export default class Search extends PureComponent {
     event.preventDefault();
     getArtists(this.state.artistToSearch)
       .then(res => {
-        this.setState({ artist: res.artists });
+        this.setState({ artists: res.artists });
+        console.log('ARTIST STATE', this.state.artists);
       });
+  }
+
+  componentDidMount() {
+    console.log('MOUNTED');
+  }
+
+  componentDidUpdated() {
+    console.log('DIDUPDATE');
   }
 
   render() {
@@ -34,7 +43,7 @@ export default class Search extends PureComponent {
         </label>
         <button>Search</button>
       </form>
-      <Artists artists={artists} />
+      {artists && <Artists artists={artists} />}
       </>
     );
   }
@@ -44,7 +53,7 @@ export function Artists({ artists }) {
   console.log('ARTIST', artists);
       const artistList = artists.map(artist => {
       return (
-        <li key={artist.id}>{artist}</li>
+        <li key={artist.id} >{artist.name}</li>
       );
     });
     return(
