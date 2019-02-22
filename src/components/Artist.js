@@ -31,7 +31,7 @@ export default class Artist extends PureComponent {
   render() {
     const worksList = this.state.works.map(work => {
       return (
-        <li key={work.id}>{work.title}</li>
+        <Work work={work} key={work.id}/>
       );
     });
     return (
@@ -52,4 +52,5 @@ Artist.propTypes = {
     })
   })
 };
+
 
