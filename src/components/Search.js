@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import Artists from './Artists.js';
 import { getArtists } from '../services/musicBrainzApi';
 
 // import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
@@ -49,17 +50,4 @@ export default class Search extends PureComponent {
   }
 }
 
-export function Artists({ artists }) {
-  console.log('ARTIST', artists);
-      const artistList = artists.map(artist => {
-      return (
-        <li key={artist.id} >{artist.name}</li>
-      );
-    });
-    return(
-      <ul>{artistList}</ul>
-    ) 
-}
-Artists.propTypes = {
-  artists: PropTypes.array.isRequired
-} 
+
