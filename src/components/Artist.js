@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getArtist } from '../services/musicBrainzApi';
+import Work from './Work';
 
 export default class Artist extends PureComponent {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Artist extends PureComponent {
   render() {
     const worksList = this.state.works.map(work => {
       return (
-        <Work work={work} key={work.id}/>
+        <Work artist={this.state.artist} work={work} key={work.id}/>
       );
     });
     return (

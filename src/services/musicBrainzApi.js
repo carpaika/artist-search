@@ -17,3 +17,11 @@ export const getArtist = (id) => {
     }));
 };
 
+export const getLyrics = (artist, work) => {
+  return fetch(`https://api.lyrics.ovh/v1/${artist}/${work}`)
+    .then(res => res.json())
+    .then(json => ({
+      lyrics: json.lyrics
+    })); 
+
+};

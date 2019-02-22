@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Artist from './Artist';
+import Lyrics from './Lyrics';
 
 export default class App extends Component {
 
@@ -11,6 +12,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/artist/:id" component={Artist} />
+          <Route exact path="/work/:artist/:work" component={Lyrics} />
           <Redirect to="/" />
         </Switch>
       </Router>

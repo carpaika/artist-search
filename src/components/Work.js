@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
-export function Work({ work }){
+export default function Work({ artist, work }){
   return (
-    <li key={work.id}>{work.title}</li>
+    <Link to={`/work/${artist}/${work.title}`} key={work.id}>
+      <li key={work.id}>{work.title}</li>
+    </Link>
   );
 }
 
 Work.propTypes = {
-  work: PropTypes.object.isRequired
+  work: PropTypes.object.isRequired,
+  artist: PropTypes.string.isRequired
 };
