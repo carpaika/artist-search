@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getLyrics } from '../services/musicBrainzApi';
+import Search from './Search';
+import { Link } from 'react-router-dom';
 
 export default class Lyrics extends PureComponent {
   constructor(props) {
@@ -12,11 +14,20 @@ export default class Lyrics extends PureComponent {
 
   fetchLyrics = () => {
     const artistAlter = this.props.match.params.artist.replace(/ /g, '-');
-    getLyrics(artistAlter, this.props.match.params.work)
+    const workAlter = this.props.match.params.work.replace(/ /g, '-');
+    getLyrics(artistAlter, workAlter)
       .then(res => {
-        this.setState({
-          lyrics: res.lyrics
-        });
+        if(res.lyrics) {
+        
+          this.setState({
+            lyrics: res.lyrics.split('Paroles de la chanson ')
+          });
+        }
+        else {
+          this.setState({
+            lyrics: 'Could not fetch lyrics for this song. Please try again.'
+          });
+        }
       });
   }
 
@@ -26,8 +37,10 @@ export default class Lyrics extends PureComponent {
 
   render() {
     return (
-      <p>{this.state.lyrics}</p>
-      
+      <>
+        <p>{this.state.lyrics}</p>
+        <Link to='/'>Return to search</Link>
+      </>
     );
   }
 }
