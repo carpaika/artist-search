@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getArtist } from '../services/musicBrainzApi';
 import Work from './Work';
+import styles from './css/Artist.css';
 
 export default class Artist extends PureComponent {
   constructor(props) {
@@ -35,10 +36,12 @@ export default class Artist extends PureComponent {
     });
     return (
       <>
-      <h1>{this.state.artist}</h1>
-      <ul>
-        {worksList}
-      </ul>
+      <div className={styles.artist}>
+        <h1>{this.state.artist}</h1>
+        <ul>
+          {worksList}
+        </ul>
+      </div>
       </>
     );
   }

@@ -55,10 +55,10 @@ export default class Search extends PureComponent {
           <button>Search</button>
         </form>
         <div>
-          {artists.length > 0 && <button onClick={this.decrement}>Page Down</button>}
-          {artists.length > 0 && count > offset && <button onClick={this.increment}>Page Up</button>}
+          {artists.length > 0 && count > 25 && <button onClick={this.decrement}>Page Down</button>}
+          {artists.length > 0 && count > 25 && count > offset && <button onClick={this.increment}>Page Up</button>}
+          {artists.length > 0 && <Artists artists={artists} />}
         </div>
-        {artists.length > 0 && <Artists artists={artists} />}
       </div>
       </>
     );
