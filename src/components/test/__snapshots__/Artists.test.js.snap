@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Artists matches a snapshot 1`] = `
+<ul
+  className="artists"
+>
+  <a
+    href="/artist/57f73e51-5b95-485b-9102-bc7bd23584f7"
+    onClick={[Function]}
+  >
+    <li>
+      Mumford’s
+    </li>
+  </a>
+  <a
+    href="/artist/e5379ae1-cb4c-46dc-89f4-3d22791f589a"
+    onClick={[Function]}
+  >
+    <li>
+      Quincy Mumford
+    </li>
+  </a>
+  <a
+    href="/artist/2f3613cf-568c-4e18-ba59-ce6d50f05f00"
+    onClick={[Function]}
+  >
+    <li>
+      Brock Mumford
+    </li>
+  </a>
+</ul>
+`;
