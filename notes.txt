@@ -41,3 +41,26 @@ function Work() {
     <Link to="/">Back to Search</Link>
   )
 }
+
+import { shallow } from 'enzyme';
+
+describe('TextSelector', () => {
+  it('can change text', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(<TextSelector text="filler text" onChange={onChange}/>);
+
+    expect(wrapper.find('input').html()).toEqual('');
+    expect(wrapper.find('input').props()).toEqual('');
+    expect(wrapper.find('input')).simulate('change'); //simulate event -> ('click' or 'submit')
+    expect(wrapper.find('input')).simulate('change'); 
+    expect(onChange.toHaveBeenCalledTimes(2); 
+  })
+
+  it('matches snapshot', () => {
+    const wrapper = shallow(<TextSelector text="filler text" onChange={onChange}/>);
+    expect(wrapper).toMatchSnapshot();
+  })
+})
+
+//simulate increment/decrement buttons
+
