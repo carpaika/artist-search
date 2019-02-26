@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getLyrics } from '../services/musicBrainzApi';
-import Search from './Search';
 import { Link } from 'react-router-dom';
 
 export default class Lyrics extends PureComponent {
