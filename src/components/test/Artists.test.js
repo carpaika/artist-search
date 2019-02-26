@@ -1,7 +1,8 @@
 import React from 'react';
 import Artists from '../Artists';
 import renderer from 'react-test-renderer';
-import { getArtists } from '../../services/musicBrainzApi';
+import { MemoryRouter } from 'react-router-dom';
+
 
 jest.mock('../../services/musicBrainzApi.js');
 
@@ -47,7 +48,9 @@ describe('Artists', () => {
         }
       }];
     const tree = renderer.create(
-      <Artists artists={artists} />
+      <MemoryRouter>
+        <Artists artists={artists} />
+      </MemoryRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Work matches a snapshot 1`] = `
+<a
+  className="work"
+  href="/work/Mumford and Sons/Beloved"
+  onClick={[Function]}
+>
+  <li>
+    Beloved
+  </li>
+</a>
+`;

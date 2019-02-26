@@ -541,29 +541,9 @@ const artists = {
 };
 
 const artist = {
-  'gender-id': null,
-  'type': 'Group',
-  'gender': null,
-  'name': 'Mumford & Sons',
-  'type-id': 'e431f5f6-b5d2-343d-8b36-72607fffb74b',
-  'sort-name': 'Mumford & Sons',
-  'begin_area': {
-    'disambiguation': '',
-    'name': 'London',
-    'sort-name': 'London',
-    'id': 'f03d09b3-39dc-4083-afd6-159e3f0d462f'
-  },
-  'end_area': null,
-  'disambiguation': '',
-  'life-span': {
-    'begin': '2007-12',
-    'ended': false,
-    'end': null
-  },
-  'id': 'c44e9c22-ef82-4a77-9bcd-af6c958446d6',
-  'isnis': [
-    '0000000121955760'
-  ],
+  
+  'artist': 'Mumford & Sons',
+
   'works': [
     {
       'type-id': null,
@@ -941,11 +921,7 @@ export const getArtists = () => {
 };
 
 export const getArtist = () => {
-  return Promise.resolve({
-    artist,
-    works: artist.works
-  });
-
+  return Promise.resolve(artist);
 };
 
 export const getLyrics = () => {
