@@ -914,7 +914,7 @@ const lyrics = {
 
 export const getArtists = () => {
   return Promise.resolve({
-    artists,
+    artists: artists.artists,
     count: 44,
     offset: 0
   });
