@@ -7,7 +7,7 @@ import store from './store';
 
 render(
   <Provider store={store}>
-    <App />,
-    document.getElementById('root')
-  </Provider>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
