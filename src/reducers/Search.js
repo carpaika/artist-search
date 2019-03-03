@@ -1,4 +1,5 @@
 import { INCREMENT } from '../actions/Search';
+import { DECREMENT } from '../actions/Search';
 
 const initialState = {
   artists: [],
@@ -13,6 +14,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         count: state.count + 1
+      };
+    case DECREMENT:
+      return {
+        ...state,
+        count: state.count - 1
       };
     default:
       return state;
