@@ -4,12 +4,13 @@ import Artists from '../components/Artists.js';
 import styles from './css/Search.css';
 import PropTypes from 'prop-types';
 
-function Search({ onChange, onClick, artists, artistToSearch, count, offset }) {
+function Search({ artists, artistToSearch, count, offset, onChange, onClick, onSubmit }) {
+  console.log('Search props:', onChange, onClick, artists, artistToSearch, count, offset, onSubmit);
   return (
     <>
     <div className={styles.search}> 
       <h1>SEARCH FOR ARTIST/MUSICIAN</h1>
-      <form onSubmit={artists}>
+      <form onSubmit={onSubmit}>
         <label>
           <input type="text" name="artistToSearch" value={artistToSearch} onChange={onChange}></input>
         </label>

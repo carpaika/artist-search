@@ -1,3 +1,43 @@
+export const ARTISTS_REQUEST = 'ARTISTS_REQUEST';
+function requestArtists(artists) {
+  return {
+    type: ARTISTS_REQUEST,
+    artists
+  };
+}
+
+export const ARTISTS_RECEIVE = 'ARTISTS_RECEIVE';
+function receiveArtists(artists, count, offset) {
+  return {
+    type: ARTISTS_RECEIVE,
+    artists,
+    count,
+    offset
+  };
+}
+
+export function fetchArtists(state) {
+  console.log(state);
+  return function(dispatch) {
+    dispatch(requestArtists(state.artists));
+    return fetch(`http://musicbrainz.org/ws/2/artist?query=${state.artistToSearch}&fmt=json&limit=25&offset=${state.offset}`)
+      .then(res => res.json(),
+        error => console.error('ERROR!: ', error)
+      )
+      .then(json => dispatch(receiveArtists({
+        artists: json.artists,
+        count: json.count,
+        offset: json.offset
+      })));  
+  };
+}
+
+export const ARTISTS_INVALIDATE = 'ARTISTS_INVALIDATE';
+export const invalidateArtists = (artists) => ({
+  type: ARTISTS_INVALIDATE,
+  artists
+});
+
 export const INCREMENT = 'INCREMENT';
 export const incrementCount = (offset) => ({
   type: INCREMENT,

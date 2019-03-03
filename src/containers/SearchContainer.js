@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { getArtistsState, getArtistToSearch, getCount, getOffset } from '../selectors/Search';
-import { incrementCount, decrementCount, updateArtistToSearch } from '../actions/Search';
+import { fetchArtists, incrementCount, decrementCount, updateArtistToSearch } from '../actions/Search';
 import Search from '../components/Search';
 import { connect } from 'react-redux';
 
@@ -13,7 +13,15 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   onChange: dispatch(updateArtistToSearch),
-  onClick: dispatch(incrementCount) || dispatch(decrementCount),
+  onClick: ({ target }) => {
+    if(target.name === 'increment') {
+      dispatch(incrementCount(1));
+    }
+    if(target.name === 'decrement') {
+      dispatch(decrementCount(1));
+    }
+  }, 
+  onSubmit: dispatch(fetchArtists)
 });
 
 export default connect(

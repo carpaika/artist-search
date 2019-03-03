@@ -1,9 +1,19 @@
-import { createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { fetchArtists } from './actions/Search';
+import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers';
+
+const loggerMiddleware = createLogger();
 
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
 );
+
+store.dispatch(fetchArtists(store.state)).then(() => console.log(store.getState()));
 
 export default store;
