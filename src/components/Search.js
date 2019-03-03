@@ -30,14 +30,12 @@ export default class Search extends PureComponent {
   increment = () => {
     this.setState(state => ({ offset: state.offset + 25 }), () => {
       this.fetchArtists(event);
-      console.log('artists', this.state.artists);
     });
   }
 
   decrement = () => {
     this.setState(state => ({ offset: state.offset - 25 }), () => {
       this.fetchArtists(event);
-      console.log('artists', this.state.artists);
     });
   }
 
