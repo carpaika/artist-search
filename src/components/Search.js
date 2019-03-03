@@ -3,6 +3,14 @@ import Artists from './Artists.js';
 import { getArtists } from '../services/musicBrainzApi';
 import styles from './css/Search.css';
 
+const mapStateToProps = {
+
+};
+
+const mapDispatchToProps = {
+
+};
+
 export default class Search extends PureComponent {
   state = {
     artists: [],
