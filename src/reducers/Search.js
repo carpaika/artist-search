@@ -1,5 +1,4 @@
-import { INCREMENT } from '../actions/Search';
-import { DECREMENT } from '../actions/Search';
+import { INCREMENT, DECREMENT, ARTISTTOSEARCH_UPDATE } from '../actions/Search';
 
 const initialState = {
   artists: [],
@@ -13,12 +12,17 @@ export default function reducer(state = initialState, action) {
     case INCREMENT:
       return {
         ...state,
-        count: state.count + 1
+        count: action.payload + 1
       };
     case DECREMENT:
       return {
         ...state,
-        count: state.count - 1
+        count: action.payload - 1
+      };
+    case ARTISTTOSEARCH_UPDATE:
+      return {
+        ...state,
+        artistToSearch: action.payload
       };
     default:
       return state;
