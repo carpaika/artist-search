@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import search from './Search';
 
-export default combineReducers(
-  console.log('need to combine reducers and bring in store')
-);
+export default combineReducers({
+  search
+});
