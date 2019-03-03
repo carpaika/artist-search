@@ -1,13 +1,13 @@
 export const INCREMENT = 'INCREMENT';
-export const incrementCount = count => ({
+export const incrementCount = (offset) => ({
   type: INCREMENT,
-  payload: count
+  payload: offset
 });
 
 export const DECREMENT = 'DECREMENT';
-export const decrementCount = count => ({
+export const decrementCount = (offset) => ({
   type: DECREMENT,
-  payload: count
+  payload: offset
 });
 
 export const ARTISTTOSEARCH_UPDATE = 'ARTISTTOSEARCH_UPDATE';

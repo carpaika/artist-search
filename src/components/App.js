@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import Search from './Search';
+import Search from '../containers/SearchContainer';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Artist from './Artist';
 import Lyrics from './Lyrics';

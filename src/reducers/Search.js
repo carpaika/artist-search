@@ -12,12 +12,12 @@ export default function reducer(state = initialState, action) {
     case INCREMENT:
       return {
         ...state,
-        count: action.payload + 1
+        offset: action.payload + 25
       };
     case DECREMENT:
       return {
         ...state,
-        count: action.payload - 1
+        offset: action.payload - 25
       };
     case ARTISTTOSEARCH_UPDATE:
       return {

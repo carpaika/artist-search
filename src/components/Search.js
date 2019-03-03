@@ -1,74 +1,37 @@
-import React, { PureComponent } from 'react';
-import Artists from './Artists.js';
-import { getArtists } from '../services/musicBrainzApi';
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import Artists from '../components/Artists.js';
 import styles from './css/Search.css';
+import PropTypes from 'prop-types';
 
-const mapStateToProps = {
-
-};
-
-const mapDispatchToProps = {
-
-};
-
-export default class Search extends PureComponent {
-  state = {
-    artists: [],
-    artistToSearch: '',
-    count: 1,
-    offset: 0
-  }
-
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  }
-
-  fetchArtists = (event) => {
-    event.preventDefault();
-    getArtists(this.state.artistToSearch, this.state.offset)
-      .then(res => {
-        this.setState({ 
-          artists: res.artists,
-          count: res.count,
-          offset: res.offset
-        });
-      });
-  }
-
-  increment = () => {
-    this.setState(state => ({ offset: state.offset + 25 }), () => {
-      this.fetchArtists(event);
-    });
-  }
-
-  decrement = () => {
-    this.setState(state => ({ offset: state.offset - 25 }), () => {
-      this.fetchArtists(event);
-    });
-  }
-
-  render() {
-
-    const { artists, artistToSearch, count, offset } = this.state;
-    return (
-      <>
-      <div className={styles.search}> 
-        <h1>SEARCH FOR ARTIST/MUSICIAN</h1>
-        <form onSubmit={this.fetchArtists}>
-          <label>
-            <input type="text" name="artistToSearch" value={artistToSearch} onChange={this.handleChange}></input>
-          </label>
-          <button>Search</button>
-        </form>
-        <div>
-          {artists.length > 0 && count > 25 && <button onClick={this.decrement}>Page Down</button>}
-          {artists.length > 0 && count > 25 && count > offset && <button onClick={this.increment}>Page Up</button>}
-          {artists.length > 0 && <Artists artists={artists} />}
-        </div>
+function Search({ onChange, onClick, artists, artistToSearch, count, offset }) {
+  return (
+    <>
+    <div className={styles.search}> 
+      <h1>SEARCH FOR ARTIST/MUSICIAN</h1>
+      <form onSubmit={artists}>
+        <label>
+          <input type="text" name="artistToSearch" value={artistToSearch} onChange={onChange}></input>
+        </label>
+        <button>Search</button>
+      </form>
+      <div>
+        {artists.length > 0 && count > 25 && <button onClick={onClick} name='decrement'>Page Down</button>}
+        {artists.length > 0 && count > 25 && count > offset && <button onClick={onClick} name='increment'>Page Up</button>}
+        {artists.length > 0 && <Artists artists={artists} />}
       </div>
-      </>
-    );
-  }
+    </div>
+    </>
+  );
 }
 
+Search.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  artists: PropTypes.array.isRequired,
+  artistToSearch: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  offset: PropTypes.number.isRequired
+};
 
+export default Search;
