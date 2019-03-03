@@ -17,7 +17,6 @@ export default class Artist extends PureComponent {
   fetchWorks = () => {
     getArtist(this.props.match.params.id)
       .then(res => {
-        console.log('STRING', res.artist);
         this.setState({
           artist: res.artist,
           works: res.works
