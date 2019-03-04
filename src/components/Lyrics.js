@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { getLyrics } from '../services/musicBrainzApi';
+import { getLyricsState } from '../selectors/Lyrics';
 import { Link } from 'react-router-dom';
+import { getLyrics } from '../services/musicBrainzApi';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Lyrics extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-  state = {
-    lyrics: ''
+class Lyrics extends PureComponent {
+
+  componentDidMount() {
+    this.props.actions.fetchLyrics();
   }
 
   fetchLyrics = () => {
@@ -17,7 +19,7 @@ export default class Lyrics extends PureComponent {
     getLyrics(artistAlter, workAlter)
       .then(res => {
         if(res.lyrics) {
-        
+          
           this.setState({
             lyrics: res.lyrics.split('Paroles de la chanson ')
           });
@@ -28,21 +30,25 @@ export default class Lyrics extends PureComponent {
           });
         }
       });
-  }
-
-  componentDidMount() {
-    this.fetchLyrics();
-  }
+  };
 
   render() {
     return (
-      <>
-        <p>{this.state.lyrics}</p>
-        <Link to='/'>Return to search</Link>
-      </>
+        <>
+          <p>{this.state.lyrics}</p>
+          <Link to='/'>Return to search</Link>
+        </>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  lyrics: getLyricsState(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(dispatch)
+});
 
 Lyrics.propTypes = {
   match: PropTypes.shape({
@@ -52,3 +58,8 @@ Lyrics.propTypes = {
     })
   })
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Lyrics);
