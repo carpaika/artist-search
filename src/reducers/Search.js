@@ -3,7 +3,7 @@ import { INCREMENT, DECREMENT, ARTISTTOSEARCH_UPDATE } from '../actions/Search';
 const initialState = {
   artists: [],
   artistToSearch: '',
-  count: 1,
+  count: 0,
   offset: 0
 };
 

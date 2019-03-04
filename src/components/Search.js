@@ -5,7 +5,6 @@ import styles from './css/Search.css';
 import PropTypes from 'prop-types';
 
 function Search({ artists, artistToSearch, count, offset, onChange, onClick, onSubmit }) {
-  console.log('Search props:', onChange, onClick, artists, artistToSearch, count, offset, onSubmit);
   return (
     <>
     <div className={styles.search}> 

@@ -16,9 +16,8 @@ function receiveArtists(artists, count, offset) {
   };
 }
 
-export function fetchArtists(state) {
-  console.log(state);
-  return function(dispatch) {
+export function fetchArtists() {
+  return function(dispatch, state) {
     dispatch(requestArtists(state.artists));
     return fetch(`http://musicbrainz.org/ws/2/artist?query=${state.artistToSearch}&fmt=json&limit=25&offset=${state.offset}`)
       .then(res => res.json(),
@@ -51,7 +50,7 @@ export const decrementCount = (offset) => ({
 });
 
 export const ARTISTTOSEARCH_UPDATE = 'ARTISTTOSEARCH_UPDATE';
-export const updateArtistToSearch = artistToSearch => ({
+export const updateArtistToSearch = (artistToSearch) => ({
   type: ARTISTTOSEARCH_UPDATE,
   payload: artistToSearch
 });

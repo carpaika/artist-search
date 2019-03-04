@@ -1,8 +1,9 @@
-export const getArtistToSearch = state => state.getArtistToSearch;
+export const getArtistToSearch = state => state.search.artistToSearch;
 
-export const getCount = state => state.count;
 
-export const getOffset = state => state.offset;
+export const getCount = state => state.search.count;
 
-export const getArtistsState = state => state.artists;
+export const getOffset = state => state.search.offset;
+
+export const getArtistsState = state => state.search.artists;
 
