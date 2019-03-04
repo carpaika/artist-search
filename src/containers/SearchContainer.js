@@ -4,7 +4,7 @@ import { fetchArtists, incrementCount, decrementCount, updateArtistToSearch } fr
 import Search from '../components/Search';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, props) => (console.log('mapState:', state), {
+const mapStateToProps = (state, props) => ({
   artists: getArtistsState(state),
   artistToSearch: getArtistToSearch(state),
   count: getCount(state),
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(decrementCount(offset));
     }
   }, 
-  onSubmit(artists, artistToSearch, offset, event) {
+  onSubmit(event, artists, artistToSearch, offset) {
     event.preventDefault();
     dispatch(fetchArtists(artists, artistToSearch, offset));
   }

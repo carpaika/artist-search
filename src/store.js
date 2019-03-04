@@ -1,6 +1,5 @@
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-// import { fetchArtists } from './actions/Search';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers';
 
@@ -17,8 +16,5 @@ const store = createStore(
   reducer,
   enhancer
 );
-
-// store.dispatch(fetchArtists()).then(() => console.log(store.getState())
-// );
 
 export default store;
