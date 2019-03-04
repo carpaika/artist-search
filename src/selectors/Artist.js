@@ -1,5 +1,3 @@
-// import { getArtist } from '../services/musicBrainzApi';
-
 export const getArtistState = state => state.artist;
 
-export const getWorks = works => state.works;
+export const getWorks = state => state.works;

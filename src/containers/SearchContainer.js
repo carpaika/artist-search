@@ -4,7 +4,7 @@ import { fetchArtists, incrementCount, decrementCount, updateArtistToSearch } fr
 import Search from '../components/Search';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
   artists: getArtistsState(state),
   artistToSearch: getArtistToSearch(state),
   count: getCount(state),

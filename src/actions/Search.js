@@ -1,5 +1,3 @@
-import { getArtists } from '../services/musicBrainzApi';
-
 export const ARTISTS_REQUEST = 'ARTISTS_REQUEST';
 function requestArtists(artists) {
   return {
@@ -21,23 +19,36 @@ function receiveArtists(artists, count, offset) {
 }
 
 export function fetchArtists(artists, artistToSearch, offset) {
-  return function(dispatch) {
+  return dispatch => {
     dispatch(requestArtists(artists));
-    return getArtists(artistToSearch, offset)
-      .then(res => dispatch(receiveArtists(artists, res)));
-    // Above is a second attempt at fetching api using an Action...
+    return fetch(`http://musicbrainz.org/ws/2/artist?query=${artistToSearch}&fmt=json&limit=25&offset=${offset}`)
+      .then(res => res.json())
+      .then(json => dispatch(receiveArtists({
+        artists: json.artists,
+        count: json.count,
+        offset: json.offset
+      }))); 
+  };
+}
 
-    // Below I'm attempting to make an api call directly in the action creator
+function shouldFetchArtists(state, artists) {
+  const artistArray = state.search[artists];
+  if(!artistArray) {
+    return true;
+  } else if(artistArray.isFetching) {
+    return false;
+  } else {
+    return artistArray.didValidate;
+  }
+}
 
-    // return fetch(`http://musicbrainz.org/ws/2/artist?query=${artistToSearch}&fmt=json&limit=25&offset=${offset}`)
-    //   .then(res => {
-    //     console.log(res.json());
-    //   })
-    //   .then(json => dispatch(receiveArtists({
-    //     artists: json.artists,
-    //     count: json.count,
-    //     offset: json.offset
-    //   })));  
+export function fetchArtistsIfNeeded(artists) {
+  return (dispatch, getState) => {
+    if(shouldFetchArtists(getState(), artist)) {
+      return dispatch(fetchArtists(artists));
+    } else {
+      return Promise.resolve();
+    }
   };
 }
 
