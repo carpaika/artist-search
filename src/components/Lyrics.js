@@ -14,10 +14,10 @@ export default class Lyrics extends PureComponent {
   fetchLyrics = () => {
     const artistAlter = this.props.match.params.artist.replace(/ /g, '-');
     const workAlter = this.props.match.params.work.replace(/ /g, '-');
+    console.log(workAlter);
     getLyrics(artistAlter, workAlter)
       .then(res => {
         if(res.lyrics) {
-        
           this.setState({
             lyrics: res.lyrics.split('Paroles de la chanson ')
           });
@@ -31,6 +31,7 @@ export default class Lyrics extends PureComponent {
   }
 
   componentDidMount() {
+    console.log('hello?');
     this.fetchLyrics();
   }
 
