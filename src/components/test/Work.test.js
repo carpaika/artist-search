@@ -1,6 +1,7 @@
 import React from 'react';
 import Work from '../Work';
 import renderer from 'react-test-renderer';
+import { MemoryRouter } from 'react-router';
 
 describe('Work', () => {
   it('matches a snapshot', () => {
@@ -19,7 +20,9 @@ describe('Work', () => {
       'title': 'Beloved'
     };
     const tree = renderer.create(
-      <Work artist={artist} work={work} />
+      <MemoryRouter>
+        <Work artist={artist} work={work} />
+      </MemoryRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

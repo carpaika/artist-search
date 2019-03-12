@@ -5,11 +5,11 @@ import styles from './css/Work.css';
 
 export default function Work({ artist, work }){
   return (
-    <>
-      <Link to={`/work/${artist}/${work.title}`} key={work.id} className={styles.work}>
+    <span className={styles.work}>
+      <Link to={`/work/${artist}/${work.title}`} key={work.id}>
         <li key={work.id}>{work.title}</li>
       </Link>
-    </>
+    </span>
   );
 }
 

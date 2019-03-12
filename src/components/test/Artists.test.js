@@ -1,7 +1,7 @@
 import React from 'react';
 import Artists from '../Artists';
 import renderer from 'react-test-renderer';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 
 
 jest.mock('../../services/musicBrainzApi.js');
